@@ -1,6 +1,6 @@
 "use client";
 import { useCounterStore } from "@/providers/counter-store-provider";
-import Image from "next/image";
+import { promises as fs } from "fs";
 
 export default function Home() {
   const { count, incrementCount, decrementCount } = useCounterStore(
