@@ -1,13 +1,33 @@
-import type { Config } from "tailwindcss";
 const colors = require("tailwindcss/colors");
 
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      primary: {
+        light: "#FFE6F1",
+        DEFAULT: "#FF006E",
+        dark: "#B3004D",
+      },
+      secondary: {
+        light: "#EBF3FF",
+        DEFAULT: "#3A86FF",
+      },
+      tertiary: {
+        light: "#FFF9E7",
+        DEFAULT: "#FFBE0B",
+      },
+      white: "#fff",
+      black: "#000",
+      gray: colors.zinc,
+      red: colors.red,
+      transparent: colors.transparent,
+    },
     fontSize: {
       sm: "0.875rem", // 14px
       base: "1rem", // 16px
@@ -48,6 +68,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/forms")({
+      strategy: "class", // only generate classes
+    }),
+  ],
 };
-export default config;
