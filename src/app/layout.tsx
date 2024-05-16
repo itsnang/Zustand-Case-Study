@@ -17,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`max-w-4xl mx-auto mb-8 min-h-screen lg:px-10 md:px-8 px-4 bg-gray-50 ${inter.className}`}
+      >
         <CounterStoreProvider>{children}</CounterStoreProvider>
       </body>
     </html>
