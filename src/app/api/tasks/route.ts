@@ -1,5 +1,5 @@
-import dbConnect from "@/app/lib/mongodb";
-import Todo from "@/app/models/todo";
+import dbConnect from "@/lib/mongodb";
+import Todo from "@/models/todo";
 import { NextRequest, NextResponse } from "next/server";
 import { HttpStatusCode } from "axios";
 
