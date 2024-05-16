@@ -1,6 +1,7 @@
-import dbConnect from "@/app/lib/mongodb";
-import Todo from "@/app/models/todo";
+import dbConnect from "@/lib/mongodb";
+import Todo from "@/models/todo";
 import { NextRequest, NextResponse } from "next/server";
+import { HttpStatusCode } from "axios";
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,6 +19,20 @@ export async function POST(req: NextRequest) {
         message: "Bad request",
       },
       { status: 400 }
+    );
+  }
+}
+export async function GET() {
+  try {
+    await dbConnect();
+    const todo: ITodo[] = await Todo.find();
+    return NextResponse.json(todo, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "Bad request",
+      },
+      { status: HttpStatusCode.BadRequest }
     );
   }
 }
