@@ -58,7 +58,7 @@ export const Button = forwardRef(
       variantClassname[variant]
     } ${fullWidth ? "w-full" : ""} ${className ? className : ""} ${
       hasShadow ? "shadow-inner" : ""
-    } ${roundedFull ? "rounded-full" : "rounded-xl lg:rounded-2xl"} ${
+    } ${roundedFull ? "rounded-full" : "rounded-xl"} ${
       icon ? "gap-4" : ""
     } disabled:bg-opacity-20 transition-transform duration-75 active:scale-95`;
 
