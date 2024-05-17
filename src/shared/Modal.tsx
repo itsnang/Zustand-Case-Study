@@ -1,7 +1,13 @@
 "use client";
 import React, { Fragment } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import { Dialog, Transition } from "@headlessui/react";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 
 interface ModalProps {
   children: React.ReactNode | string;
@@ -21,7 +27,7 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <Transition appear show={show} as={Fragment}>
       <Dialog as="div" onClose={onClose} className="relative z-50">
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
@@ -31,10 +37,10 @@ export const Modal: React.FC<ModalProps> = ({
           leaveTo="opacity-0"
         >
           <div className="fixed inset-0 bg-black bg-opacity-25" />
-        </Transition.Child>
+        </TransitionChild>
         <div className="fixed inset-0 overflow-y-auto">
           <div className="opa mt-20 flex min-h-full items-start justify-center p-4 md:mt-40">
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="duration-[25ms]"
               enterFrom="opacity-90 scale-105"
@@ -44,13 +50,13 @@ export const Modal: React.FC<ModalProps> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel
+              <DialogPanel
                 className={
                   "w-full max-w-xl transform rounded-2xl bg-white px-6 pt-6 pb-8 text-left align-middle shadow-xl transition-all " +
                   className
                 }
               >
-                <Dialog.Title
+                <DialogTitle
                   as="h3"
                   className="items-between flex justify-between text-lg font-medium leading-6 text-gray-900"
                 >
@@ -58,10 +64,10 @@ export const Modal: React.FC<ModalProps> = ({
                   <button onClick={onClose}>
                     <XMarkIcon width={24} />
                   </button>
-                </Dialog.Title>
+                </DialogTitle>
                 <div>{children}</div>
-              </Dialog.Panel>
-            </Transition.Child>
+              </DialogPanel>
+            </TransitionChild>
           </div>
         </div>
       </Dialog>
