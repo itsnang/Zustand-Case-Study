@@ -22,7 +22,7 @@ export default function InputField({
   className?: HTMLAttributes<HTMLInputElement>["className"];
   placeholder?: string;
   defaultValue?: string;
-  label: string;
+  label?: string;
   errorClassName?: HTMLAttributes<HTMLParagraphElement>["className"];
   disabled?: boolean;
 }) {
@@ -34,7 +34,7 @@ export default function InputField({
         name={name}
         type={type}
         defaultValue={defaultValue}
-        className={`h-13 focus:ring-primary rounded-xl border border-gray-200 px-4 text-gray-900 focus:outline-none focus:ring ${className} ${
+        className={`sm:h-14 h-12 focus:ring-primary rounded-xl border border-gray-200 px-4 text-gray-900 focus:outline-none focus:ring ${className} ${
           label ? "mt-2" : ""
         } ${
           type === "time" || type === "date"

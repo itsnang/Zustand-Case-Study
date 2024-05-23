@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { Button } from "@/components/Button";
+import { compareAsc, format } from "date-fns";
 
 import {
   ChevronDownIcon,
@@ -24,8 +25,7 @@ interface TodoCardProps {
   img: string | StaticImageData;
   title: string;
   href: LinkProps["href"];
-  date: string;
-  time: string;
+  date: Date;
   location: string;
 
   onDelete?: () => void;
@@ -37,7 +37,6 @@ export const TodoCard: React.FC<TodoCardProps> = ({
   img,
   href,
   title,
-  time,
   location,
   onDelete,
 }) => {
@@ -68,7 +67,7 @@ export const TodoCard: React.FC<TodoCardProps> = ({
                 <div className="flex flex-1 justify-between gap-1 p-1 lg:p-2 ">
                   <div className="flex-1">
                     <div className="text-primary text-sm">
-                      {date} | {time}
+                      {format(date, "dd MMM yyyy HH:mm")}
                     </div>
                     <Link
                       className="line-clamp-2 text-sm font-medium text-gray-900 md:text-xl"
